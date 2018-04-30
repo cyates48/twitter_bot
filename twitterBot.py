@@ -32,6 +32,8 @@ fourth_line = " "
 last_word = " "
 last_word2 = " " 
 rhymes = []
+hashtags = ["#RawPoetry", "#DeepPoems", "#SpittingBars", "#Verses", "#RhymingSimon", "#ABCB", "#PoetryVibes", "#SimpleWordPlay", "#HoD", "#HeartOfDarkness", "#InspiredPoet"]
+
 
 # generate a new four lines
 j = True
@@ -41,6 +43,20 @@ while j:
   first_line = text_model.make_short_sentence(60)
   third_line = text_model.make_short_sentence(60)
 
+  #generate either one or two hashtags
+  random1 = random.randint(0,10)
+  hashtag1 = hashtags[random1]
+  hashtag2 = ' '
+  i = True
+  if random1 > 4:
+    while i:
+      random2 = random.randint(0,10)
+      if random1 != random2:
+        hashtag2 = hashtags[random2]
+        i = False
+      else: 
+        continue
+  
   # generate the second line, grab last word, and find the words that rhyme with it
   i = True
   while i:
@@ -67,9 +83,9 @@ while j:
     # match last word to rhymes. if it pairs, send the verse to publish it
     for word in rhymes:
       if word == last_word2:
-        verse = first_line + '\n' + second_line + '\n' + third_line + '\n' + fourth_line
+        verse = first_line + '\n' + second_line + '\n' + third_line + '\n' + fourth_line + '\n' + hashtag1 + ' ' + hashtag2
         api.tweet_function(verse)
-        time.sleep(600)
+        time.sleep(60)
         i = False
         #j = False
         break
