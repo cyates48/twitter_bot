@@ -2,6 +2,7 @@ import tweepy
 import time
 import markovify
 import pronouncing
+import random
 
 # set up twitter bot access and tweet function
 class TwitterAPI:
