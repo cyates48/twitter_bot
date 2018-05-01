@@ -62,7 +62,7 @@ while j:
   i = True
   while i:
     second_line = text_model.make_short_sentence(60)
-    if first_line is None:
+    if second_line is None:
       continue
     last_word = second_line.split()[-1]
     last_word = last_word[:-1]
